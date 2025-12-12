@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sughapriya R — Portfolio</title>
+  <meta name="description" content="Portfolio of Sughapriya R — IT Student, Web Developer & AI enthusiast." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ---------- Theme variables (light/dark) ---------- */
+    :root{
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #0f1724;
+      --muted: #61707a;
+      --accent: #2eb0ff;
+      --accent-2: #9b6bff;
+      --glass: rgba(15,23,36,0.04);
+      --radius: 12px;
+      --maxw:1120px;
+      --nav-height:72px;
+    }
+    :root[data-theme="dark"]{
+      --bg: linear-gradient(180deg,#071028 0%, #061325 100%);
+      --card: rgba(255,255,255,0.02);
+      --text: #e9f1fb;
+      --muted: #9aa8bd;
+      --glass: rgba(255,255,255,0.03);
+    }
+
+    /* ---------- Base ---------- */
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+    a{color:inherit}
+    .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+    /* ---------- Topbar ---------- */
+    .topbar {
+      position:sticky;top:12px;left:0;right:0;
+      margin:0 auto;max-width:var(--maxw);
+      height:var(--nav-height);display:flex;align-items:center;gap:12px;padding:10px 16px;border-radius:14px;
+      background:var(--card);box-shadow:0 8px 28px rgba(2,6,23,0.06);z-index:90;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;color:white;background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+    .brand h1{margin:0;font-size:16px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+    nav.main{margin-left:auto;display:flex;gap:8px}
+    nav.main a{padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:700}
+    nav.main a.active{background:var(--accent);color:#001028}
+    nav.main a:hover{background:var(--glass);color:var(--text)}
+
+    /* hamburger (shown on smaller screens) */
+    .mobile-menu-btn{display:none;font-size:22px;background:transparent;border:none;color:var(--text);cursor:pointer;padding:8px;border-radius:8px}
+    .mobile-menu{display:none;position:absolute;top:calc(var(--nav-height) + 18px);left:12px;right:12px;background:var(--card);padding:10px;border-radius:10px;box-shadow:0 8px 30px rgba(2,6,23,0.06);flex-direction:column;gap:6px;z-index:95}
+    .mobile-menu a{padding:10px;border-radius:8px;text-decoration:none;color:var(--text);font-weight:700}
+    .mobile-menu a:hover{background:var(--glass)}
+
+    /* ---------- Layout ---------- */
+    .site {max-width:var(--maxw);margin:26px auto;padding:0 18px}
+    .layout{display:grid;grid-template-columns:320px 1fr;gap:26px;align-items:start}
+    .sidebar{position:sticky;top:calc(var(--nav-height) + 22px);padding:18px;border-radius:12px;background:var(--card);box-shadow:0 8px 30px rgba(2,6,23,0.06)}
+    .photo{width:100%;height:320px;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:block}
+    .photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .name{margin-top:12px;font-weight:800;font-size:18px}
+    .title{color:var(--accent);font-weight:700;margin-top:6px}
+    .pill{background:var(--glass);padding:10px;border-radius:10px;color:var(--muted);font-weight:700;display:flex;gap:10px;align-items:center}
+    .socials{display:flex;gap:10px;margin-top:12px}
+    .socials a{width:40px;height:40px;border-radius:8px;background:var(--glass);display:inline-flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none}
+    .socials a:hover{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#001028}
+
+    main{min-height:60vh}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 22px rgba(2,6,23,0.04)}
+    .section + .section{margin-top:18px}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .item{background:var(--card);padding:12px;border-radius:10px;margin-bottom:10px}
+    .small{color:var(--muted);font-size:13px}
+
+    /* ---------- Buttons ---------- */
+    .btn{display:inline-flex;gap:8px;align-items:center;padding:10px 12px;border-radius:10px;font-weight:700;text-decoration:none}
+    .btn-primary{background:var(--accent);color:#001028}
+    .btn-outline{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--text)}
+
+    /* ---------- Footer ---------- */
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px;padding:18px}
+
+    /* ---------- Floating theme chip (bottom-right) ---------- */
+    .theme-chip {
+      position:fixed;right:18px;bottom:18px;z-index:120;
+      background:var(--card);padding:10px;border-radius:999px;display:flex;gap:8px;align-items:center;box-shadow:0 10px 30px rgba(2,6,23,0.08)
+    }
+    .theme-btn{padding:8px 10px;border-radius:999px;border:1px solid transparent;background:transparent;color:var(--muted);font-weight:700;cursor:pointer}
+    .theme-btn.active{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#001028;border-color:transparent}
+    .theme-label{font-size:13px;color:var(--muted);margin-right:6px}
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px) {
+      .layout{grid-template-columns:1fr}
+      nav.main{display:none}
+      .mobile-menu-btn{display:block}
+      .mobile-menu{left:12px;right:12px}
+      .sidebar{position:static}
+    }
+    @media (max-width: 600px) {
+      .photo{height:200px}
+      .brand h1{font-size:15px}
+      .brand p{font-size:12px}
+      .topbar{padding:8px 12px}
+      .mobile-menu{top:calc(var(--nav-height) + 8px)}
+    }
+  </style>
+</head>
+<body>
+  <!-- root theme attribute controlled by JS -->
+  <div id="root">
+
+    <!-- TOPBAR -->
+    <header class="topbar" role="banner">
+      <div class="brand" aria-hidden="false">
+        <div class="logo" aria-hidden="true">SP</div>
+        <div>
+          <h1>Sughapriya R</h1>
+          <p>IT Student • Web Developer • AI Enthusiast</p>
+        </div>
+      </div>
+
+      <!-- Desktop nav (hidden on small screens) -->
+      <nav class="main" aria-label="Main navigation">
+        <a href="javascript:;" data-target="about">About</a>
+        <a href="javascript:;" data-target="projects">Projects</a>
+        <a href="javascript:;" data-target="experience">Experience</a>
+        <a href="javascript:;" data-target="certs">Certifications</a>
+        <a href="javascript:;" data-target="contact">Contact</a>
+      </nav>
+
+      <!-- hamburger placed outside nav so it remains visible when nav is hidden -->
+      <button class="mobile-menu-btn" aria-label="Open menu" id="mobileToggle"><i class="fa-solid fa-bars"></i></button>
+
+      <!-- mobile dropdown -->
+      <nav class="mobile-menu" id="mobileMenu" aria-hidden="true" aria-label="Mobile navigation">
+        <a href="javascript:;" data-target="about">About</a>
+        <a href="javascript:;" data-target="projects">Projects</a>
+        <a href="javascript:;" data-target="experience">Experience</a>
+        <a href="javascript:;" data-target="certs">Certifications</a>
+        <a href="javascript:;" data-target="contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- SITE -->
+    <div class="site">
+      <div class="layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar" aria-labelledby="profile-name">
+          <div class="photo" role="img" aria-label="Profile photo">
+            <img id="profileImage" src="C:\Users\sugha\OneDrive\Pictures\Uploads\IMG-20240615-WA0031.jpg" alt="Sughapriya" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;600&quot; height=&quot;600&quot;><rect width=&quot;100%&quot; height=&quot;100%&quot; fill=%230f1724/><text x=&quot;50%&quot; y=&quot;50%&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot; fill=%23ffffff font-size=&quot;80&quot; font-family=&quot;Inter, Arial&quot;>SP</text></svg>';">
+          </div>
+
+          <div id="profile-name" class="name">Sughapriya R</div>
+          <div class="title">IT Student — B.Tech (IT)</div>
+
+          <div class="contact" aria-label="Contact details">
+            <div class="pill"><i class="fa-solid fa-phone"></i><span style="margin-left:8px">8148513899</span></div>
+            <div class="pill"><i class="fa-solid fa-envelope"></i><span style="margin-left:8px">sughapriya2004@gmail.com</span></div>
+            <div class="pill"><i class="fa-solid fa-location-dot"></i><span style="margin-left:8px">Gingee, Villupuram</span></div>
+          </div>
+
+          <div class="socials" aria-hidden="false">
+            <a href="https://github.com/Sughapriyarajan" target="_blank" rel="noopener" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://leetcode.com/u/Sugha_0221/" target="_blank" rel="noopener" title="LeetCode"><i class="fa-solid fa-code"></i></a>
+          </div>
+
+          <div style="margin-top:14px">
+            <a class="btn btn-primary" href="Sugha resume.pdf" download><i class="fa-solid fa-download"></i>&nbsp;Download Resume</a>
+          </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main>
+          <!-- ABOUT -->
+          <section id="about" class="card section" data-page>
+            <h2>About</h2>
+            <p class="small">Motivated and detail-oriented professional with strong skills in problem-solving, communication, and teamwork. Passionate about learning new technologies and applying innovative solutions to achieve project goals.</p>
+
+            <div class="two-col" style="margin-top:12px">
+              <div>
+                <h3>Education</h3>
+                <div class="item">
+                  <strong>B.Tech — Information Technology</strong>
+                  <div class="small">Dhanalakshmi Srinivasan Engineering College (Autonomous) — 2022–2026</div>
+                  <div class="small"><strong>CGPA:</strong> 8.7</div>
+                </div>
+
+                <div class="item">
+                  <strong>HSC — Saradha Matric Hr. Sec School</strong>
+                  <div class="small">2021–2022 — 76%</div>
+                </div>
+              </div>
+
+              <div>
+                <h3>Skills</h3>
+                <div class="item">
+                  <div style="display:flex;flex-wrap:wrap;gap:8px">
+                    <span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span><span class="pill">Java</span>
+                    <span class="pill">Python</span><span class="pill">MySQL</span><span class="pill">Git</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- PROJECTS -->
+          <section id="projects" class="card section" data-page hidden>
+            <h2>Projects</h2>
+            <div class="item"><strong>Deep Learning-Based Framework for Detecting Facial Morphing & Synthetic Media</strong><div class="small">Presented at TNSCST ’25. Implemented image preprocessing, model training and detection pipeline.</div></div>
+            <div class="item"><strong>AI-Powered Livestock Disease Prediction System</strong><div class="small">Mini project using image/audio analysis to detect livestock health conditions.</div></div>
+            <div class="item"><strong>Responsive Portfolio Website</strong><div class="small">This site — built with semantic HTML, CSS and JS.</div></div>
+          </section>
+
+          <!-- EXPERIENCE -->
+          <section id="experience" class="card section" data-page hidden>
+            <h2>Internships & Workshops</h2>
+            <div class="item"><strong>Full Stack Web Development Intern — VDT Edu Tantr Ventures Pvt. Ltd.</strong><div class="small">Bangalore — July–Aug 2025</div></div>
+            <div class="item"><strong>Web Development Intern — CodeBind Technologies</strong><div class="small">Chennai — July 2024</div></div>
+            <div class="item"><strong>AI Revolution in Cyber Security Summit — DSEC(A)</strong><div class="small">Nov 2023</div></div>
+          </section>
+
+          <!-- CERTIFICATIONS -->
+          <section id="certs" class="card section" data-page hidden>
+            <h2>Certifications</h2>
+            <div class="item small">Human Computer Interaction — NPTEL<br/>Fundamentals of Generative AI — Microsoft<br/>Basics for Students — MongoDB<br/>Micro-Certification: Welcome to ServiceNow</div>
+          </section>
+
+          <!-- CONTACT -->
+          <section id="contact" class="card section" data-page hidden>
+            <h2>Contact</h2>
+            <p class="small">Open to internships, collaborations and project opportunities.</p>
+            <div class="two-col" style="margin-top:12px">
+              <div class="item">
+                <h4>Get in touch</h4>
+                <div class="small">Email: <a href="mailto:sughapriya2004@gmail.com">sughapriya2004@gmail.com</a></div>
+                <div class="small">Phone: <a href="tel:+918148513899">+91 81485 13899</a></div>
+                <div style="margin-top:8px"><a class="btn btn-primary" href="mailto:sughapriya2004@gmail.com">Email Me</a></div>
+              </div>
+
+              <div class="item">
+                <h4>Quick links</h4>
+                <div class="small">Availability: Open to internships & collaborative projects</div>
+                <div style="margin-top:8px"><a class="btn btn-outline" href="Sugha resume.pdf" download>Download Resume</a></div>
+              </div>
+            </div>
+          </section>
+
+          <footer><div class="small" style="text-align:center">© 2025 Sughapriya R</div></footer>
+        </main>
+      </div>
+    </div>
+
+    <!-- Floating theme chip -->
+    <div class="theme-chip" role="region" aria-label="Theme switcher">
+      <span class="theme-label visually-hidden">Theme</span>
+      <button class="theme-btn" id="themeDark" data-mode="dark">Dark</button>
+      <button class="theme-btn active" id="themeLight" data-mode="light">Light</button>
+      <button class="theme-btn" id="themeAuto" data-mode="auto">Auto</button>
+    </div>
+  </div>
+
+  <script>
+    // ====== Page switching (single-file SPA) ======
+    const pages = ["about","projects","experience","certs","contact"];
+    function showPage(pageId){
+      pages.forEach(id=>{
+        const el = document.getElementById(id);
+        if(!el) return;
+        if(id === pageId){
+          el.removeAttribute('hidden');
+          el.style.display = 'block';
+        } else {
+          el.setAttribute('hidden','');
+          el.style.display = 'none';
+        }
+      });
+      // highlight nav links (desktop + mobile)
+      document.querySelectorAll('nav a[data-target]').forEach(a=>{
+        a.classList.toggle('active', a.dataset.target === pageId);
+      });
+      document.querySelectorAll('.mobile-menu a[data-target]').forEach(a=>{
+        a.classList.toggle('active', a.dataset.target === pageId);
+      });
+      // close mobile menu if open
+      document.getElementById('mobileMenu').style.display = 'none';
+      // ensure top visible
+      window.scrollTo({top:0,behavior:'instant'});
+    }
+
+    // wire up nav links
+    document.querySelectorAll('nav.main a, .mobile-menu a').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const target = a.dataset.target;
+        if(target) showPage(target);
+      });
+    });
+
+    // default page: about
+    showPage('about');
+
+    // ====== Mobile menu toggle ======
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileToggle.addEventListener('click', ()=>{
+      const isOpen = mobileMenu.style.display === 'flex';
+      mobileMenu.style.display = isOpen ? 'none' : 'flex';
+      mobileMenu.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+    });
+
+    // ====== Theme switcher ======
+    const root = document.documentElement;
+    const btns = document.querySelectorAll('.theme-btn');
+
+    // helper: apply theme
+    function applyTheme(mode){
+      if(mode === 'auto'){
+        // follow system preference
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      } else {
+        root.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
+      }
+      // save
+      localStorage.setItem('portfolio-theme', mode);
+      // update active class on buttons
+      btns.forEach(b=> b.classList.toggle('active', b.dataset.mode === mode));
+    }
+
+    // initial theme: from storage or auto
+    (function initTheme(){
+      const saved = localStorage.getItem('portfolio-theme') || 'auto';
+      // if saved=auto, apply based on system; else apply saved
+      applyTheme(saved);
+      // listen to system changes only if auto selected
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      mq.addEventListener?.('change', ()=> {
+        if((localStorage.getItem('portfolio-theme')||'auto') === 'auto') applyTheme('auto');
+      });
+    })();
+
+    // wire theme buttons
+    btns.forEach(btn=>{
+      btn.addEventListener('click', ()=> applyTheme(btn.dataset.mode));
+    });
+
+    // ====== keyboard accessibility: close menu on escape ======
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape'){
+        mobileMenu.style.display = 'none';
+      }
+    });
+
+    // optional: preview local image if user chooses to upload later (keeps your original handler)
+    function previewLocalImage(input){
+      if (!input) return;
+      const file = input.files?.[0];
+      if (!file) return;
+      const img = document.getElementById('profileImage');
+      img.src = URL.createObjectURL(file);
+    }
+  </script>
+</body>
+</html>
